@@ -75,3 +75,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   });
 });
+
+//add pics n maybe vids to customer testimonials
+//more textimonials and better shoes
