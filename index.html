@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEXUS</title>
-
+    <script src="nexus.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -66,63 +66,8 @@
     <!-- Featured Products -->
     <section class="container" id="products">
       <h2 class="section-title">Featured Products</h2>
-      <div class="products-grid">
-        <div class="product-card">
-          <div class="product-image">
-            <img
-              src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-              alt="Running Shoes"
-            />
-          </div>
-          <div class="product-info">
-            <div class="product-category">Running</div>
-            <h3 class="product-name">Air Max Pro</h3>
-            <div class="product-price">$129.99</div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <img
-              src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-              alt="Basketball Shoes"
-            />
-          </div>
-          <div class="product-info">
-            <div class="product-category">Basketball</div>
-            <h3 class="product-name">Jump Force Elite</h3>
-            <div class="product-price">$149.99</div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <img
-              src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-              alt="Training Shoes"
-            />
-          </div>
-          <div class="product-info">
-            <div class="product-category">Training</div>
-            <h3 class="product-name">Flex Trainer</h3>
-            <div class="product-price">$119.99</div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <img
-              src="https://images.unsplash.com/photo-1605408499391-6368c628ef42?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
-              alt="Lifestyle Shoes"
-            />
-          </div>
-          <div class="product-info">
-            <div class="product-category">Lifestyle</div>
-            <h3 class="product-name">Urban Classic</h3>
-            <div class="product-price">$109.99</div>
-          </div>
-        </div>
-      </div>
+      <button id="load-products-btn" class="load-btn">Load Products</button>
+      <div class="products-grid"></div>
     </section>
 
     <!-- Features Section -->
@@ -299,125 +244,5 @@
         </div>
       </div>
     </footer>
-    <script>
-      // Testimonial Slider
-      let currentSlide = 0;
-      const slides = document.querySelectorAll(".testimonial-slide");
-      const dots = document.querySelectorAll(".dot");
-
-      function showSlide(n) {
-        // Hide all slides
-        slides.forEach((slide) => {
-          slide.style.display = "none";
-        });
-
-        // Remove active class from all dots
-        dots.forEach((dot) => {
-          dot.classList.remove("active");
-        });
-
-        // Show the selected slide and activate its dot
-        slides[n].style.display = "block";
-        dots[n].classList.add("active");
-        currentSlide = n;
-      }
-
-      // Initialize slider
-      showSlide(0);
-
-      // Add click event to dots
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-          showSlide(index);
-        });
-      });
-
-      // Auto slide change
-      setInterval(() => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      }, 5000);
-
-      // Mobile Menu Toggle
-      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-      const navMenu = document.getElementById("nav-menu");
-
-      mobileMenuBtn.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-        mobileMenuBtn.innerHTML = navMenu.classList.contains("active")
-          ? '<i class="fas fa-times"></i>'
-          : '<i class="fas fa-bars"></i>';
-      });
-
-      // Close mobile menu when clicking a link
-      document.querySelectorAll("#nav-menu a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navMenu.classList.remove("active");
-          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        });
-      });
-
-      //Theme toggle
-
-      const theme = document.getElementById("theme");
-
-      theme.addEventListener("click", () => {
-        const isDark = document.body.classList.toggle("dark");
-
-        theme.innerHTML = isDark
-          ? `<i class="fas fa-moon"></i>`
-          : `<i class="fas fa-sun"></i>`;
-      });
-
-      // Newsletter form submission
-      const newsletterForm = document.getElementById("subscribe-form");
-      newsletterForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const emailInput = this.querySelector('input[type="email"]');
-        const email = emailInput.value;
-
-        if (email) {
-          alert(
-            `Thank you for subscribing with ${email}! You'll receive our newsletter soon.`
-          );
-          emailInput.value = "";
-        }
-      });
-
-      // Product card hover effect enhancement
-      const productCards = document.querySelectorAll(".product-card");
-      productCards.forEach((card) => {
-        card.addEventListener("mouseenter", function () {
-          this.style.transform = "translateY(-10px)";
-        });
-
-        card.addEventListener("mouseleave", function () {
-          this.style.transform = "translateY(0)";
-        });
-      });
-
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          if (this.getAttribute("href") !== "#") {
-            e.preventDefault();
-
-            const targetId = this.getAttribute("href");
-            if (targetId === "#") return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: "smooth",
-              });
-            }
-          }
-        });
-      });
-
-      //add pics n maybe vids to customer testimonials
-      //more textimonials and better shoes
-    </script>
   </body>
 </html>
