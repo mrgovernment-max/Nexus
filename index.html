@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXUS</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <link rel="stylesheet" href="nexus.css" />
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <a href="index.html" class="logo">NEX<span>US</span></a>
+
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav>
+          <ul id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-icons">
+          <li class="theme active" id="theme">
+            <i class="fas fa-sun"></i>
+          </li>
+          <a href="#"><i class="fas fa-search"></i></a>
+          <a href="#"><i class="fas fa-shopping-bag"></i></a>
+          <a href="#"><i class="fas fa-user"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="overlay"></div>
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        src="https://res.cloudinary.com/dazhskqcc/video/upload/v1766533331/-7539266355593407483_doqfjm.mp4"
+      ></video>
+      <div class="hero-content">
+        <h1>BUILT DIFFERENT</h1>
+        <p>
+          Experience the latest in athletic innovation with our premium
+          collection of footwear and apparel. Designed for champions, built for
+          everyone.
+        </p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="container" id="products">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+              alt="Running Shoes"
+            />
+          </div>
+          <div class="product-info">
+            <div class="product-category">Running</div>
+            <h3 class="product-name">Air Max Pro</h3>
+            <div class="product-price">$129.99</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+              alt="Basketball Shoes"
+            />
+          </div>
+          <div class="product-info">
+            <div class="product-category">Basketball</div>
+            <h3 class="product-name">Jump Force Elite</h3>
+            <div class="product-price">$149.99</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+              alt="Training Shoes"
+            />
+          </div>
+          <div class="product-info">
+            <div class="product-category">Training</div>
+            <h3 class="product-name">Flex Trainer</h3>
+            <div class="product-price">$119.99</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1605408499391-6368c628ef42?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+              alt="Lifestyle Shoes"
+            />
+          </div>
+          <div class="product-info">
+            <div class="product-category">Lifestyle</div>
+            <h3 class="product-name">Urban Classic</h3>
+            <div class="product-price">$109.99</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">Why Choose Nexus</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="feature-title">Maximum Performance</h3>
+            <p class="feature-desc">
+              Our products are engineered with cutting-edge technology to
+              enhance your athletic performance.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3 class="feature-title">Sustainable Materials</h3>
+            <p class="feature-desc">
+              We're committed to using recycled and sustainable materials in all
+              our products.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="feature-title">Lifetime Warranty</h3>
+            <p class="feature-desc">
+              All our products come with a lifetime warranty against
+              manufacturing defects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-slider">
+          <div class="testimonial-slide active">
+            <p class="testimonial-text">
+              "The best athletic shoes I've ever owned. Lightweight,
+              comfortable, and they look amazing!"
+            </p>
+            <p class="testimonial-author">- Alex Johnson, Marathon Runner</p>
+          </div>
+
+          <div class="testimonial-slide">
+            <p class="testimonial-text">
+              "I've been wearing Nexus for all my training sessions. The
+              durability and comfort are unmatched."
+            </p>
+            <p class="testimonial-author">- Sarah Williams, Fitness Coach</p>
+          </div>
+
+          <div class="testimonial-slide">
+            <p class="testimonial-text">
+              "Not only are these shoes performance-oriented, but they're also
+              stylish enough for everyday wear."
+            </p>
+            <p class="testimonial-author">- Michael Chen, Urban Athlete</p>
+          </div>
+
+          <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="newsletter">
+      <div class="container">
+        <h2>Stay In The Game</h2>
+        <p>
+          Subscribe to our newsletter for exclusive offers, new releases, and
+          athletic insights.
+        </p>
+        <form class="newsletter-form" id="subscribe-form">
+          <input type="email" placeholder="Enter your email address" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="getin" id="getin">
+      <video class="bg-video" autoplay muted loop playsinline>
+        <source
+          src="https://res.cloudinary.com/dazhskqcc/video/upload/v1766530364/-375401620250279651_radh2c.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+      <div class="overlay"></div>
+
+      <div class="container">
+        <a href="#products">
+          JUMP IN
+          <i class="fas fa-exclamation-circle"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>NEXUS</h3>
+            <p>
+              Inspired by the world's leading athletic brand, Nexus delivers
+              premium performance footwear and apparel for athletes of all
+              levels.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Shop</h3>
+            <ul>
+              <li><a href="#">Men's Shoes</a></li>
+              <li><a href="#">Women's Shoes</a></li>
+              <li><a href="#">Kids' Shoes</a></li>
+              <li><a href="#">Apparel</a></li>
+              <li><a href="#">Accessories</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Help</h3>
+            <ul>
+              <li><a href="#">Customer Service</a></li>
+              <li><a href="#">Order Status</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Size Guide</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; 2023 NEXUS. Inspired by Nike. This is a demonstration website
+            for educational purposes.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Testimonial Slider
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".testimonial-slide");
+      const dots = document.querySelectorAll(".dot");
+
+      function showSlide(n) {
+        // Hide all slides
+        slides.forEach((slide) => {
+          slide.style.display = "none";
+        });
+
+        // Remove active class from all dots
+        dots.forEach((dot) => {
+          dot.classList.remove("active");
+        });
+
+        // Show the selected slide and activate its dot
+        slides[n].style.display = "block";
+        dots[n].classList.add("active");
+        currentSlide = n;
+      }
+
+      // Initialize slider
+      showSlide(0);
+
+      // Add click event to dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          showSlide(index);
+        });
+      });
+
+      // Auto slide change
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }, 5000);
+    </script>
+  </body>
+</html>
