@@ -481,6 +481,87 @@ nav ul li a:hover {
   text-align: center;
 }
 
+/*Pics */
+.customers-verdict {
+  padding: 4rem 2rem;
+  background: transparent;
+  text-align: center;
+}
+
+.customers-verdict .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.verdicts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.verdict-card {
+  position: relative;
+  background: var(--secondary-color);
+  padding: 1.5rem;
+  border: 1.5px solid var(--accent-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transform: rotate(calc(-7deg + 2deg * var(--i, 0)));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* PIN DOT */
+.verdict-card::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.verdict-card:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.verdict-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.verdict-text {
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.verdict-name {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+}
+
+/* Responsive: vertical stack on small screens */
+@media (max-width: 600px) {
+  .verdicts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .verdict-card {
+    transform: rotate(0deg);
+  }
+}
+
 .newsletter h2 {
   font-size: 36px;
   margin-bottom: 20px;
