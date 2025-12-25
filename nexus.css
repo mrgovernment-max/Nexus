@@ -104,7 +104,8 @@ nav ul li a:hover {
   align-items: center;
 }
 
-.nav-icons a {
+.nav-icons a,
+.nav-icons li {
   color: var(--primary-color);
   margin-left: 20px;
   font-size: 18px;

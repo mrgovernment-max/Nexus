@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nike P-6000 - Product Details</title>
+    <title>NEXUS - Product Details</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -24,7 +24,6 @@
             <i class="fas fa-sun"></i>
           </li>
           <a href="#"><i class="fas fa-shopping-bag"></i></a>
-          <a href="#"><i class="fas fa-user"></i></a>
         </div>
       </div>
     </header>
@@ -33,7 +32,7 @@
     <div class="breadcrumb container">
       <a href="index.html">Home</a> <span>/</span> <a href="#">Shop</a>
       <span>/</span> <a href="index.html#products">Shoes</a> <span>/</span>
-      <span>Nike P-6000</span>
+      <span id="pname"></span>
     </div>
 
     <!-- Product Details -->
@@ -47,8 +46,13 @@
     <footer class="footer">
       <div class="container">
         <p>
-          &copy; 2023 NEXUS. Inspired by Nike. This is a demonstration website
-          for educational purposes.
+          &copy; 2023 NEXUS. This is a demonstration website by
+          <a
+            target="_blank"
+            id="me"
+            href="https://www.instagram.com/_idonmindit?igsh=cGRsYWtscnhnNTNs&utm_source=qr"
+            >ME</a
+          >.
         </p>
       </div>
     </footer>
@@ -209,8 +213,8 @@
                         <button class="btn btn-primary" id="add-to-cart">
                             <i class="fas fa-shopping-cart"></i> Add to Cart
                         </button>
-                        <button class="btn btn-secondary" id="wishlist-btn">
-                            <i class="far fa-heart"></i> Add to Wishlist
+                        <button class="btn btn-secondary" id="buy-btn">
+                            Purchase
                         </button>
                     </div>
                     
@@ -242,6 +246,8 @@
                     </div>
                 </div>
             `;
+
+        document.getElementById("pname").innerHTML = product.name;
 
         // Add event listeners after rendering
         setupEventListeners();
@@ -298,23 +304,6 @@
               "data-size"
             )}) to cart`
           );
-        });
-
-        // Wishlist button
-        const wishlistBtn = document.getElementById("wishlist-btn");
-        wishlistBtn.addEventListener("click", function () {
-          const icon = this.querySelector("i");
-          if (icon.classList.contains("far")) {
-            icon.classList.remove("far");
-            icon.classList.add("fas");
-            this.style.color = "#dc3545";
-            alert("Added to wishlist!");
-          } else {
-            icon.classList.remove("fas");
-            icon.classList.add("far");
-            this.style.color = "";
-            alert("Removed from wishlist!");
-          }
         });
 
         // Back button
