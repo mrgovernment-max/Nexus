@@ -71,9 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadBtn = document.getElementById("load-products-btn");
   const productsGrid = document.querySelector(".products-grid");
 
-  //Shadow shi
+  //Loading shadows
 
-  function showSkeletons(count = 6) {
+  function showSkeletons(count = 10) {
     productsGrid.innerHTML = "";
     for (let i = 0; i < count; i++) {
       const skel = document.createElement("div");
@@ -117,7 +117,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         card.innerHTML = `
           <div class="product-image">
-            <img src="${product.img_url}" alt="${product.name}">
+          <img 
+          src="${product.img_url}" 
+          alt="${product.name}" 
+          class="product-img"
+          data-id="${product.id}"
+        />
+        
           </div>
           <div class="product-info">
             <div class="product-category">${product.availability}</div>
@@ -127,6 +133,20 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         productsGrid.appendChild(card);
+      });
+
+      //Pass Products Property to dt page
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.classList.contains("product-img")) return;
+
+        const id = Number(e.target.dataset.id);
+
+        const product = products.find((p) => p.id === id);
+        if (!product) return;
+
+        localStorage.setItem("selectedProduct", JSON.stringify(product));
+        window.location.href = "nexusdt.html";
       });
 
       // Remove button cleanly
