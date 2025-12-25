@@ -604,6 +604,97 @@ nav ul li a:hover {
   background-color: #ff8535;
 }
 
+.newsletter-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 18px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 30px 0 0 30px;
+}
+
+.newsletter-form button {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  border: none;
+  padding: 0 35px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.loading .btn-text {
+  opacity: 0;
+}
+
+button.loading .loader {
+  display: block;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Add this to your existing CSS */
+#subscribe-btn {
+  position: relative;
+}
+
+#subscribe-btn .loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+#subscribe-btn.loading .btn-text {
+  visibility: hidden;
+}
+
+#subscribe-btn.loading .loader {
+  display: block !important;
+}
+
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#response-msg {
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+#response-msg {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
 .getin {
   position: relative;
   height: 70vh;

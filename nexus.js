@@ -162,17 +162,72 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Newsletter form submission
-  const newsletterForm = document.getElementById("subscribe-form");
-  newsletterForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const emailInput = this.querySelector('input[type="email"]');
-    const email = emailInput.value;
+  // Newsletter form submission
+  const form = document.getElementById("subscribe-form");
+  const button = form.querySelector("#subscribe-btn");
+  const responseMsg = document.getElementById("response-msg");
 
-    if (email) {
-      alert(
-        `Thank you for subscribing with ${email}! You'll receive our newsletter soon.`
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const emailInput = form.querySelector("input[type='email']");
+    const email = emailInput.value.trim();
+
+    if (!email) {
+      responseMsg.style.color = "#dc3545";
+      responseMsg.textContent = "Please enter your email address.";
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      responseMsg.style.color = "#dc3545";
+      responseMsg.textContent = "Please enter a valid email address.";
+      return;
+    }
+
+    button.classList.add("loading");
+    responseMsg.textContent = "";
+    responseMsg.style.color = "";
+
+    try {
+      const res = await fetch(
+        "https://backendroutes-lcpt.onrender.com/nexus_newsletter",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
       );
-      emailInput.value = "";
+
+      const data = await res.json();
+
+      if (res.ok) {
+        responseMsg.style.color = "#28a745";
+        responseMsg.textContent = data.message;
+        form.reset();
+
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          if (responseMsg.textContent === data.message) {
+            responseMsg.textContent = "";
+          }
+        }, 5000);
+      } else {
+        responseMsg.style.color = "#dc3545";
+        responseMsg.textContent = data.message || "Something went wrong!";
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      responseMsg.style.color = "#dc3545";
+      responseMsg.textContent =
+        "Network error. Please check your connection and try again.";
+    } finally {
+      button.classList.remove("loading");
     }
   });
 

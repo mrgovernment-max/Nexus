@@ -110,7 +110,7 @@
             <div class="feature-icon">
               <i class="fas fa-ship"></i>
             </div>
-            <h3 class="feature-title">Qucik Delivery</h3>
+            <h3 class="feature-title">Fast Delivery</h3>
             <p class="feature-desc">
               Purchases are handled with care and delivered in the shortest
               possible time.
@@ -215,8 +215,14 @@
         </p>
         <form class="newsletter-form" id="subscribe-form">
           <input type="email" placeholder="Enter your email address" required />
-          <button type="submit">Subscribe</button>
+          <button type="submit" id="subscribe-btn">
+            <span class="btn-text">Subscribe</span>
+            <span class="loader" style="display: none">
+              <i class="fas fa-spinner fa-spin"></i>
+            </span>
+          </button>
         </form>
+        <p id="response-msg" style="margin-top: 15px; min-height: 24px"></p>
       </div>
     </section>
 
