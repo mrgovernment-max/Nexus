@@ -23,7 +23,10 @@
           <li class="theme active" id="theme">
             <i class="fas fa-sun"></i>
           </li>
-          <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+          <div class="cart-icon">
+            <a href="cart.html"> <i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-count" id="cart-count">0</span>
+          </div>
         </div>
       </div>
     </header>
@@ -378,6 +381,26 @@
           }
         }, 100);
       });
+
+      async function getCartno() {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const cartCon = document.getElementById("cart-count");
+        const res = await fetch(
+          `https://backendroutes-lcpt.onrender.com/cart/${user.id}`,
+          {
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
+
+        const cartItemno = await res.json();
+        cartCon.innerHTML = Number(cartItemno.length);
+      }
+
+      getCartno();
     </script>
   </body>
 </html>
