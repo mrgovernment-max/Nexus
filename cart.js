@@ -58,6 +58,10 @@ async function loadCart() {
       };
     });
 
+    console.log(merged);
+
+    sessionStorage.setItem("cart", JSON.stringify(merged));
+
     renderCart(merged);
 
     // Update cart count
@@ -194,18 +198,6 @@ async function removeItem(productId) {
   }
 }
 
-function updateQuantity(cartId, action) {
-  // In a real app, you would call PATCH /cart/:id
-  // fetch(`${API_BASE}/cart/${cartId}`, {
-  //     method: 'PATCH',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ action: action })
-  // })
-  alert(`Quantity ${action === "increase" ? "increased" : "decreased"}`);
-  loadCart(); // Reload cart
-}
-
 function checkout() {
-  alert("Proceeding to checkout...");
-  // window.location.href = 'checkout.html';
+  window.location.href = "checkout.html";
 }
