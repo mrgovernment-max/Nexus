@@ -253,10 +253,6 @@ function setupEventListeners() {
     const size = Number(selectedSize);
     const productId = product.id;
 
-    console.log(userId);
-    console.log(size);
-    console.log(productId);
-
     try {
       const res = await fetch(
         "https://backendroutes-lcpt.onrender.com/cart/add",
@@ -279,6 +275,12 @@ function setupEventListeners() {
         // UI animation
         this.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
         this.style.backgroundColor = "#28a745";
+
+        const cartCon = document.getElementById("cart-count");
+        // force reflow so animation can replay
+        cartCon.classList.remove("bounce");
+        void cartCon.offsetWidth;
+        cartCon.classList.add("bounce");
       }
       console.log(data);
     } catch (err) {
@@ -321,6 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function getCartno() {
   const user = JSON.parse(sessionStorage.getItem("user"));
   const cartCon = document.getElementById("cart-count");
+
   const res = await fetch(
     `https://backendroutes-lcpt.onrender.com/cart/${user.id}`,
     {
@@ -334,11 +337,6 @@ async function getCartno() {
 
   const cartItemno = await res.json();
   cartCon.innerHTML = Number(cartItemno.length);
-
-  // force reflow so animation can replay
-  cartCon.classList.remove("bounce");
-  void cartCon.offsetWidth;
-  cartCon.classList.add("bounce");
 }
 
 getCartno();
