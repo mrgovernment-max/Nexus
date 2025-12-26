@@ -294,7 +294,7 @@
         const addToCartBtn = document.getElementById("add-to-cart");
 
         addToCartBtn.addEventListener("click", async function () {
-          const user = [];
+          const user = JSON.parse(localStorage.getItem("user"));
 
           const userId = user.id;
           console.log(user);
