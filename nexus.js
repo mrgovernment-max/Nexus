@@ -243,6 +243,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  async function getCartno() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const cartCon = document.getElementById("cart-count");
+    const res = await fetch(
+      `https://backendroutes-lcpt.onrender.com/cart/${user.id}`,
+      {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+
+    const cartItemno = await res.json();
+    cartCon.innerHTML = Number(cartItemno.length);
+  }
+
+  getCartno();
+
   //add pics n maybe vids to customer testimonials
   //more textimonials and better shoes
 });
