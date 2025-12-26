@@ -294,15 +294,15 @@
         const addToCartBtn = document.getElementById("add-to-cart");
 
         addToCartBtn.addEventListener("click", async function () {
-          const user = JSON.parse(localStorage.getItem("user"));
+          const user = [];
+
           const userId = user.id;
           console.log(user);
 
-          /*  if (!user) {
-                  alert("Please log in to add items to cart.");
-                  window.location.href = "login.html";
-                  return;
-                }*/
+          if (!user || user.length === 0) {
+            alert("Please log in to add items to cart.");
+            return;
+          }
 
           const selectedSize = document.querySelector(
             ".size-option.selected"
