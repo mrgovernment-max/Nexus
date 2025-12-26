@@ -430,6 +430,32 @@ span {
   color: var(--secondary-color);
 }
 
+.cart-login-warning {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cart-login-warning .btn-disabled {
+  background-color: #ccc;
+  color: #666;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: not-allowed;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-login-warning .login-text {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ff4b4b;
+  font-weight: 500;
+}
+
 /* Product Details */
 .details-section {
   margin-top: 40px;

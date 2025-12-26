@@ -150,6 +150,13 @@ function renderProductDetails() {
 
                     <!-- Action Buttons -->
                     <div class="action-buttons">
+                    <div class="cart-login-warning" id="cart-login-warning">
+  <button class="btn btn-disabled" disabled id="d-add-to-cart">
+    <i class="fas fa-lock"></i> Add to Cart
+  </button>
+  <p class="login-text">You need to log in to add items to your cart.</p>
+</div>
+
                         <button class="btn btn-primary" id="add-to-cart">
                             <i class="fas fa-shopping-cart"></i> Add to Cart
                         </button>
@@ -222,17 +229,18 @@ function setupEventListeners() {
 
   // Add to cart button
   const addToCartBtn = document.getElementById("add-to-cart");
+  const daddToCartBtn = document.getElementById("cart-login-warning");
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
+  if (!user || user.length === 0) {
+    addToCartBtn.style.display = `none`;
+    return;
+  }
+
+  daddToCartBtn.style.display = "none";
 
   addToCartBtn.addEventListener("click", async function () {
-    const user = JSON.parse(sessionStorage.getItem("user"));
-
     const userId = user.id;
-    console.log(user);
-
-    if (!user || user.length === 0) {
-      alert("Please log in to add items to cart.");
-      return;
-    }
 
     const selectedSize = document.querySelector(
       ".size-option.selected"
@@ -325,8 +333,6 @@ async function getCartno() {
   );
 
   const cartItemno = await res.json();
-  cartCon.innerHTML = Number(cartItemno.length);
-
   cartCon.innerHTML = Number(cartItemno.length);
 
   // force reflow so animation can replay
