@@ -2,27 +2,431 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEXUS — Sign Up</title>
-    <link rel="stylesheet" href="auth.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, sans-serif;
+      }
+
+      body {
+        background: #0a0a0a;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      /* Background Pattern */
+      .bg-pattern {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(255, 107, 53, 0.05) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 107, 53, 0.03) 0%,
+            transparent 50%
+          );
+        z-index: -1;
+      }
+
+      /* Main Container */
+      .signup-container {
+        width: 100%;
+        max-width: 440px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Header */
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .logo {
+        font-size: 42px;
+        font-weight: 900;
+        color: white;
+        margin-bottom: 10px;
+        letter-spacing: -1px;
+      }
+
+      .logo span {
+        color: #ff6b35;
+      }
+
+      .tagline {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      /* Form */
+      .form-group {
+        margin-bottom: 24px;
+      }
+
+      .form-group label {
+        display: block;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        transition: all 0.3s;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #ff6b35;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      /* Password wrapper */
+      .password-wrapper {
+        position: relative;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        padding: 4px;
+        font-size: 18px;
+      }
+
+      /* Submit Button */
+      .submit-btn {
+        width: 100%;
+        padding: 18px;
+        background: #ff6b35;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .submit-btn:hover {
+        background: #ff7d4d;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .submit-btn.loading {
+        opacity: 0.8;
+        cursor: not-allowed;
+      }
+
+      .submit-btn.loading::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin: -10px 0 0 -10px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Login Link */
+      .login-link {
+        text-align: center;
+        margin-top: 30px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 15px;
+      }
+
+      .login-link a {
+        color: #ff6b35;
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 5px;
+        transition: color 0.3s;
+      }
+
+      .login-link a:hover {
+        color: #ff8c66;
+      }
+
+      /* Messages */
+      .message {
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        display: none;
+      }
+
+      .error {
+        background: rgba(255, 68, 68, 0.1);
+        color: #ff6b6b;
+        border: 1px solid rgba(255, 68, 68, 0.3);
+      }
+
+      .success {
+        background: rgba(40, 167, 69, 0.1);
+        color: #4ade80;
+        border: 1px solid rgba(40, 167, 69, 0.3);
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        .signup-container {
+          padding: 30px 20px;
+          border-radius: 16px;
+        }
+
+        .logo {
+          font-size: 36px;
+        }
+
+        .form-group input {
+          padding: 14px;
+        }
+
+        .submit-btn {
+          padding: 16px;
+        }
+      }
+
+      /* Terms */
+      .terms {
+        margin-top: 20px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .terms a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+      }
+
+      .terms a:hover {
+        color: #ff6b35;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <div class="auth-container">
-      <h1>Create Account</h1>
-      <p class="auth-sub">Join NEXUS</p>
+    <div class="bg-pattern"></div>
+
+    <div class="signup-container">
+      <div class="header">
+        <div class="logo">NEX<span>US</span></div>
+        <div class="tagline">CREATE ACCOUNT</div>
+      </div>
 
       <form id="signup-form">
-        <input type="text" id="first_name" placeholder="First Name" required />
-        <input type="email" id="email" placeholder="Email Address" required />
-        <input type="password" id="password" placeholder="Password" required />
-        <button type="submit">Sign Up</button>
-      </form>
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input
+            type="text"
+            id="first_name"
+            placeholder="Enter your first name"
+            required
+          />
+        </div>
 
-      <p class="switch">
-        Already have an account?
-        <a href="login.html">Log in</a>
-      </p>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="password"
+              placeholder="Create a password"
+              required
+            />
+            <button type="button" class="toggle-password" id="togglePassword">
+              <i class="far fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Create Account</button>
+
+        <div class="login-link">
+          Already have an account?
+          <a href="login.html">Sign in</a>
+        </div>
+
+        <div class="terms">
+          By creating an account, you agree to our <a href="#">Terms</a> and
+          <a href="#">Privacy Policy</a>
+        </div>
+
+        <!-- Message container -->
+        <div id="message-container"></div>
+      </form>
     </div>
 
-    <script src="auth.js"></script>
+    <script>
+      const API_BASE = "https://backendroutes-lcpt.onrender.com";
+
+      // Password toggle
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordInput = document.getElementById("password");
+      const eyeIcon = togglePassword.querySelector("i");
+
+      togglePassword.addEventListener("click", function () {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        eyeIcon.className = type === "text" ? "far fa-eye-slash" : "far fa-eye";
+      });
+
+      // Form submission - EXACT SAME LOGIC AS YOU PROVIDED
+      const signupForm = document.getElementById("signup-form");
+      const submitButton = document.querySelector(".submit-btn");
+      const messageContainer = document.getElementById("message-container");
+
+      function showMessage(text, type) {
+        messageContainer.innerHTML = `<div class="message ${type}">${text}</div>`;
+        const msg = messageContainer.querySelector(".message");
+        msg.style.display = "block";
+
+        if (type === "error") {
+          setTimeout(() => {
+            msg.style.display = "none";
+          }, 3000);
+        }
+      }
+
+      if (signupForm) {
+        signupForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const first_name = document.getElementById("first_name").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          // Basic validation
+          if (!first_name || !email || !password) {
+            showMessage("Please fill in all fields", "error");
+            return;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showMessage("Please enter a valid email address", "error");
+            return;
+          }
+
+          if (password.length < 6) {
+            showMessage("Password must be at least 6 characters", "error");
+            return;
+          }
+
+          // Add loading state
+          submitButton.classList.add("loading");
+          submitButton.disabled = true;
+
+          try {
+            const res = await fetch(`${API_BASE}/auth/signup`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ first_name, email, password }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+              throw new Error(data.message || "Signup failed");
+            }
+
+            // Show success message
+            showMessage(
+              "✓ Account created successfully! Redirecting to login...",
+              "success"
+            );
+
+            // Redirect after delay (EXACT SAME LOGIC)
+            setTimeout(() => {
+              alert("Account created. Please log in.");
+              window.location.href = "login.html";
+            }, 1500);
+          } catch (err) {
+            // Show error message (EXACT SAME LOGIC)
+            showMessage(err.message || "Signup failed", "error");
+
+            // Remove loading state on error
+            submitButton.classList.remove("loading");
+            submitButton.disabled = false;
+          }
+        });
+      }
+    </script>
   </body>
 </html>
