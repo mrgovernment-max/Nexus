@@ -1,0 +1,338 @@
+const theme = document.getElementById("theme");
+
+theme.addEventListener("click", () => {
+  const isDark = document.body.classList.toggle("dark");
+
+  theme.innerHTML = isDark
+    ? `<i class="fas fa-moon"></i>`
+    : `<i class="fas fa-sun"></i>`;
+});
+
+const loadBtn = document.getElementById("load-products-btn");
+const productsGrid = document.querySelector(".products-grid");
+// Retrieve product data from sessionStorage
+const productData = JSON.parse(sessionStorage.getItem("selectedProduct"));
+
+// If no product data, show a default product
+const product = productData || {
+  id: 1,
+  name: "Nike P-6000",
+  price: "124.99",
+  img_url:
+    "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/177461e4-2ad3-4773-86d4-95bb5fbde7fc/NIKE+P-6000.png",
+  img_url_1:
+    "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/df3c6245-f78c-40fd-b016-9449f60bef7c/NIKE+P-6000.png",
+  img_url_2:
+    "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7f03aa5d-6cc5-48af-a852-003c00a5b529/NIKE+P-6000.png",
+  img_url_3:
+    "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/c9e6b690-33ca-4ef1-b310-3f177cde622e/NIKE+P-6000.png",
+  availability: "In Stock",
+  brand_description:
+    "Nike continues to push the boundaries of lifestyle and sport design. The P-6000 channels early 2000s runner vibes with an edge for today's streetwear.",
+  brand_img_url:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFU-2iH6cTYyGB6i1nK_-Dr78Y4ZOaGf6Shw&s",
+  description:
+    "The Nike P-6000 fuses retro running aesthetics with modern comfort. Breathable mesh, layered overlays, and a durable build make it perfect for everyday style.",
+  rating: "4.3",
+};
+
+// Generate star rating HTML
+function generateStarRating(rating) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 >= 0.5;
+  let starsHtml = "";
+
+  for (let i = 0; i < 5; i++) {
+    if (i < fullStars) {
+      starsHtml += '<i class="fas fa-star"></i>';
+    } else if (i === fullStars && hasHalfStar) {
+      starsHtml += '<i class="fas fa-star-half-alt"></i>';
+    } else {
+      starsHtml += '<i class="far fa-star"></i>';
+    }
+  }
+
+  return starsHtml;
+}
+
+// Size options
+const sizes = ["7", "8", "9", "10", "11", "12"];
+
+// Generate product details HTML
+function renderProductDetails() {
+  const container = document.getElementById("product-container");
+
+  container.innerHTML = `
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image">
+                        <img src="${product.img_url}" alt="${
+    product.name
+  }" id="main-product-image">
+                    </div>
+                    <div class="thumbnail-images">
+                        <div class="thumbnail active" data-img="${
+                          product.img_url
+                        }">
+                            <img src="${product.img_url}" alt="${
+    product.name
+  } thumbnail">
+                        </div>
+                        <div class="thumbnail" data-img="${product.img_url_1}">
+                            <img src="${product.img_url_1}" alt="${
+    product.name
+  } thumbnail 1">
+                        </div>
+                        <div class="thumbnail" data-img="${product.img_url_2}">
+                            <img src="${product.img_url_2}" alt="${
+    product.name
+  } thumbnail 2">
+                        </div>
+                        <div class="thumbnail" data-img="${product.img_url_3}">
+                            <img src="${product.img_url_3}" alt="${
+    product.name
+  } thumbnail 3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <h1>${product.name}</h1>
+                    <div class="product-category">Running Shoes</div>
+
+                    <div class="product-rating">
+                        <div class="stars">
+                            ${generateStarRating(parseFloat(product.rating))}
+                        </div>
+                        <span class="rating-value">${product.rating}</span>
+                        <span class="rating-count">(128 reviews)</span>
+                    </div>
+
+                    <div class="product-price">$${product.price}</div>
+
+                    <div class="availability">
+                        <i class="fas fa-check-circle in-stock"></i>
+                        <span>${product.availability}</span>
+                    </div>
+
+                    <div class="product-description">
+                        <p>${product.description}</p>
+                    </div>
+
+                    <div class="brand-section">
+                        <div class="brand-logo">
+                            <img src="${
+                              product.brand_img_url
+                            }" alt="Nike Brand">
+                        </div>
+                        <div class="brand-description">
+                            ${product.brand_description}
+                        </div>
+                    </div>
+
+                    <!-- Size Selector -->
+                    <div class="size-selector">
+                        <div class="size-title">
+                            <span>Select Size</span>
+                            <a href="#" class="size-guide">Size Guide</a>
+                        </div>
+                        <div class="size-options" id="size-options">
+                            ${sizes
+                              .map(
+                                (size) => `
+                                <div class="size-option" data-size="${size}">${size}</div>
+                            `
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="add-to-cart">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-secondary" id="buy-btn">
+                            Purchase
+                        </button>
+                    </div>
+
+                    <!-- Product Details Section -->
+                    <div class="details-section">
+                        <h3 class="details-title">Product Details</h3>
+                        <ul class="details-list">
+                            <li>
+                                <span class="detail-label">Product ID:</span>
+                                <span>${product.id}</span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Material:</span>
+                                <span>Breathable Mesh & Synthetic Leather</span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Weight:</span>
+                                <span>320g (per shoe)</span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Color:</span>
+                                <span>White/Black/Orange</span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Warranty:</span>
+                                <span>2 Years Manufacturing Warranty</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+  document.getElementById("pname").innerHTML = product.name;
+
+  // Add event listeners after rendering
+  setupEventListeners();
+}
+
+// Set up event listeners
+function setupEventListeners() {
+  // Thumbnail click event
+  const thumbnails = document.querySelectorAll(".thumbnail");
+  const mainImage = document.getElementById("main-product-image");
+
+  thumbnails.forEach((thumbnail) => {
+    thumbnail.addEventListener("click", function () {
+      // Update main image
+      const imgUrl = this.getAttribute("data-img");
+      mainImage.src = imgUrl;
+
+      // Update active thumbnail
+      thumbnails.forEach((t) => t.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+
+  // Size selection
+  const sizeOptions = document.querySelectorAll(".size-option");
+  sizeOptions.forEach((option) => {
+    option.addEventListener("click", function () {
+      sizeOptions.forEach((o) => o.classList.remove("selected"));
+      this.classList.add("selected");
+    });
+  });
+
+  // Add to cart button
+  const addToCartBtn = document.getElementById("add-to-cart");
+
+  addToCartBtn.addEventListener("click", async function () {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    const userId = user.id;
+    console.log(user);
+
+    if (!user || user.length === 0) {
+      alert("Please log in to add items to cart.");
+      return;
+    }
+
+    const selectedSize = document.querySelector(
+      ".size-option.selected"
+    ).innerHTML;
+
+    if (!selectedSize) {
+      alert("Please select a size ");
+      return;
+    }
+    const size = Number(selectedSize);
+    const productId = product.id;
+
+    console.log(userId);
+    console.log(size);
+    console.log(productId);
+
+    try {
+      const res = await fetch(
+        "https://backendroutes-lcpt.onrender.com/cart/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId, productId, size }),
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error("Failed to add to cart");
+      }
+
+      const data = await res.json();
+      if (data.message === "Added to cart") {
+        getCartno();
+        // UI animation
+        this.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
+        this.style.backgroundColor = "#28a745";
+      }
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+      alert("Could not add item to cart. Try again.");
+
+      // revert UI on failure
+      this.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
+      this.style.backgroundColor = "";
+      return;
+    }
+
+    setTimeout(() => {
+      this.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
+      this.style.backgroundColor = "";
+    }, 2000);
+  });
+
+  // Back button
+  const backBtn = document.querySelector(".back-btn");
+  backBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.history.back();
+  });
+}
+
+// Initialize the page
+document.addEventListener("DOMContentLoaded", function () {
+  renderProductDetails();
+
+  // Auto-select first size
+  setTimeout(() => {
+    const firstSize = document.querySelector(".size-option");
+    if (firstSize) {
+      firstSize.classList.add("selected");
+    }
+  }, 100);
+});
+
+async function getCartno() {
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  const cartCon = document.getElementById("cart-count");
+  const res = await fetch(
+    `https://backendroutes-lcpt.onrender.com/cart/${user.id}`,
+    {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }
+  );
+
+  const cartItemno = await res.json();
+  cartCon.innerHTML = Number(cartItemno.length);
+
+  cartCon.innerHTML = Number(cartItemno.length);
+
+  // force reflow so animation can replay
+  cartCon.classList.remove("bounce");
+  void cartCon.offsetWidth;
+  cartCon.classList.add("bounce");
+}
+
+getCartno();
