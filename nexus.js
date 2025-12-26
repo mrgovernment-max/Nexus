@@ -154,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
         loadBtn.remove();
       }, 300);
     } catch (err) {
-      console.error(err);
       productsGrid.innerHTML = `<p class="error-text">Could not load products.</p>`;
       loadBtn.classList.remove("loading");
       loadBtn.disabled = false;
@@ -222,7 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
         responseMsg.textContent = data.message || "Something went wrong!";
       }
     } catch (err) {
-      console.error("Fetch error:", err);
       responseMsg.style.color = "#dc3545";
       responseMsg.textContent =
         "Network error. Please check your connection and try again.";

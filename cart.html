@@ -111,7 +111,6 @@
           // Update cart count
           document.getElementById("cart-count").textContent = cartItems.length;
         } catch (err) {
-          console.error(err);
           cartContent.innerHTML = `
                     <div class="error-container">
                         <div class="error-icon">
@@ -209,7 +208,6 @@
       // Remove item from cart
       async function removeItem(productId) {
         const user = JSON.parse(sessionStorage.getItem("user"));
-        console.log(user.id, productId);
 
         if (!user) {
           alert("Please log in to manage your cart.");
@@ -235,7 +233,7 @@
           );
 
           const data = await res.json();
-          console.log(data);
+
           if (!res.ok) throw new Error(data.message);
 
           alert("Item removed from cart");

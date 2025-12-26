@@ -412,13 +412,13 @@
               "success"
             );
 
-            // Redirect after delay (EXACT SAME LOGIC)
+            // Redirect after delay
             setTimeout(() => {
               alert("Account created. Please log in.");
               window.location.href = "login.html";
             }, 1500);
           } catch (err) {
-            // Show error message (EXACT SAME LOGIC)
+            // Show error message
             showMessage(err.message || "Signup failed", "error");
 
             // Remove loading state on error
