@@ -123,129 +123,139 @@
         const container = document.getElementById("product-container");
 
         container.innerHTML = `
-                <!-- Product Images -->
-                <div class="product-images">
-                    <div class="main-image">
-                        <img src="${product.img_url}" alt="${
+                      <!-- Product Images -->
+                      <div class="product-images">
+                          <div class="main-image">
+                              <img src="${product.img_url}" alt="${
           product.name
         }" id="main-product-image">
-                    </div>
-                    <div class="thumbnail-images">
-                        <div class="thumbnail active" data-img="${
-                          product.img_url
-                        }">
-                            <img src="${product.img_url}" alt="${
+                          </div>
+                          <div class="thumbnail-images">
+                              <div class="thumbnail active" data-img="${
+                                product.img_url
+                              }">
+                                  <img src="${product.img_url}" alt="${
           product.name
         } thumbnail">
-                        </div>
-                        <div class="thumbnail" data-img="${product.img_url_1}">
-                            <img src="${product.img_url_1}" alt="${
+                              </div>
+                              <div class="thumbnail" data-img="${
+                                product.img_url_1
+                              }">
+                                  <img src="${product.img_url_1}" alt="${
           product.name
         } thumbnail 1">
-                        </div>
-                        <div class="thumbnail" data-img="${product.img_url_2}">
-                            <img src="${product.img_url_2}" alt="${
+                              </div>
+                              <div class="thumbnail" data-img="${
+                                product.img_url_2
+                              }">
+                                  <img src="${product.img_url_2}" alt="${
           product.name
         } thumbnail 2">
-                        </div>
-                        <div class="thumbnail" data-img="${product.img_url_3}">
-                            <img src="${product.img_url_3}" alt="${
+                              </div>
+                              <div class="thumbnail" data-img="${
+                                product.img_url_3
+                              }">
+                                  <img src="${product.img_url_3}" alt="${
           product.name
         } thumbnail 3">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product Info -->
-                <div class="product-info">
-                    <h1>${product.name}</h1>
-                    <div class="product-category">Running Shoes</div>
-                    
-                    <div class="product-rating">
-                        <div class="stars">
-                            ${generateStarRating(parseFloat(product.rating))}
-                        </div>
-                        <span class="rating-value">${product.rating}</span>
-                        <span class="rating-count">(128 reviews)</span>
-                    </div>
-                    
-                    <div class="product-price">$${product.price}</div>
-                    
-                    <div class="availability">
-                        <i class="fas fa-check-circle in-stock"></i>
-                        <span>${product.availability}</span>
-                    </div>
-                    
-                    <div class="product-description">
-                        <p>${product.description}</p>
-                    </div>
-                    
-                    <div class="brand-section">
-                        <div class="brand-logo">
-                            <img src="${
-                              product.brand_img_url
-                            }" alt="Nike Brand">
-                        </div>
-                        <div class="brand-description">
-                            ${product.brand_description}
-                        </div>
-                    </div>
-                    
-                    <!-- Size Selector -->
-                    <div class="size-selector">
-                        <div class="size-title">
-                            <span>Select Size</span>
-                            <a href="#" class="size-guide">Size Guide</a>
-                        </div>
-                        <div class="size-options" id="size-options">
-                            ${sizes
-                              .map(
-                                (size) => `
-                                <div class="size-option" data-size="${size}">${size}</div>
-                            `
-                              )
-                              .join("")}
-                        </div>
-                    </div>
-                    
-                    <!-- Action Buttons -->
-                    <div class="action-buttons">
-                        <button class="btn btn-primary" id="add-to-cart">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart
-                        </button>
-                        <button class="btn btn-secondary" id="buy-btn">
-                            Purchase
-                        </button>
-                    </div>
-                    
-                    <!-- Product Details Section -->
-                    <div class="details-section">
-                        <h3 class="details-title">Product Details</h3>
-                        <ul class="details-list">
-                            <li>
-                                <span class="detail-label">Product ID:</span>
-                                <span>${product.id}</span>
-                            </li>
-                            <li>
-                                <span class="detail-label">Material:</span>
-                                <span>Breathable Mesh & Synthetic Leather</span>
-                            </li>
-                            <li>
-                                <span class="detail-label">Weight:</span>
-                                <span>320g (per shoe)</span>
-                            </li>
-                            <li>
-                                <span class="detail-label">Color:</span>
-                                <span>White/Black/Orange</span>
-                            </li>
-                            <li>
-                                <span class="detail-label">Warranty:</span>
-                                <span>2 Years Manufacturing Warranty</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            `;
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Product Info -->
+                      <div class="product-info">
+                          <h1>${product.name}</h1>
+                          <div class="product-category">Running Shoes</div>
+
+                          <div class="product-rating">
+                              <div class="stars">
+                                  ${generateStarRating(
+                                    parseFloat(product.rating)
+                                  )}
+                              </div>
+                              <span class="rating-value">${
+                                product.rating
+                              }</span>
+                              <span class="rating-count">(128 reviews)</span>
+                          </div>
+
+                          <div class="product-price">$${product.price}</div>
+
+                          <div class="availability">
+                              <i class="fas fa-check-circle in-stock"></i>
+                              <span>${product.availability}</span>
+                          </div>
+
+                          <div class="product-description">
+                              <p>${product.description}</p>
+                          </div>
+
+                          <div class="brand-section">
+                              <div class="brand-logo">
+                                  <img src="${
+                                    product.brand_img_url
+                                  }" alt="Nike Brand">
+                              </div>
+                              <div class="brand-description">
+                                  ${product.brand_description}
+                              </div>
+                          </div>
+
+                          <!-- Size Selector -->
+                          <div class="size-selector">
+                              <div class="size-title">
+                                  <span>Select Size</span>
+                                  <a href="#" class="size-guide">Size Guide</a>
+                              </div>
+                              <div class="size-options" id="size-options">
+                                  ${sizes
+                                    .map(
+                                      (size) => `
+                                      <div class="size-option" data-size="${size}">${size}</div>
+                                  `
+                                    )
+                                    .join("")}
+                              </div>
+                          </div>
+
+                          <!-- Action Buttons -->
+                          <div class="action-buttons">
+                              <button class="btn btn-primary" id="add-to-cart">
+                                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                              </button>
+                              <button class="btn btn-secondary" id="buy-btn">
+                                  Purchase
+                              </button>
+                          </div>
+
+                          <!-- Product Details Section -->
+                          <div class="details-section">
+                              <h3 class="details-title">Product Details</h3>
+                              <ul class="details-list">
+                                  <li>
+                                      <span class="detail-label">Product ID:</span>
+                                      <span>${product.id}</span>
+                                  </li>
+                                  <li>
+                                      <span class="detail-label">Material:</span>
+                                      <span>Breathable Mesh & Synthetic Leather</span>
+                                  </li>
+                                  <li>
+                                      <span class="detail-label">Weight:</span>
+                                      <span>320g (per shoe)</span>
+                                  </li>
+                                  <li>
+                                      <span class="detail-label">Color:</span>
+                                      <span>White/Black/Orange</span>
+                                  </li>
+                                  <li>
+                                      <span class="detail-label">Warranty:</span>
+                                      <span>2 Years Manufacturing Warranty</span>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  `;
 
         document.getElementById("pname").innerHTML = product.name;
 
@@ -282,28 +292,70 @@
 
         // Add to cart button
         const addToCartBtn = document.getElementById("add-to-cart");
-        addToCartBtn.addEventListener("click", function () {
-          const selectedSize = document.querySelector(".size-option.selected");
+
+        addToCartBtn.addEventListener("click", async function () {
+          const user = JSON.parse(localStorage.getItem("user"));
+          const userId = user.id;
+          console.log(user);
+
+          /*  if (!user) {
+                  alert("Please log in to add items to cart.");
+                  window.location.href = "login.html";
+                  return;
+                }*/
+
+          const selectedSize = document.querySelector(
+            ".size-option.selected"
+          ).innerHTML;
+
           if (!selectedSize) {
-            alert("Please select a size first");
+            alert("Please select a size ");
             return;
           }
+          const size = Number(selectedSize);
+          const productId = product.id;
 
-          // Add animation
-          this.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
-          this.style.backgroundColor = "#28a745";
+          console.log(userId);
+          console.log(size);
+          console.log(productId);
+
+          try {
+            const res = await fetch(
+              "https://backendroutes-lcpt.onrender.com/cart/add",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userId, productId, size }),
+              }
+            );
+
+            if (!res.ok) {
+              throw new Error("Failed to add to cart");
+            }
+
+            const data = await res.json();
+            if (data.message === "Added to cart") {
+              // UI animation
+              this.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
+              this.style.backgroundColor = "#28a745";
+            }
+            console.log(data);
+          } catch (err) {
+            console.error(err);
+            alert("Could not add item to cart. Try again.");
+
+            // revert UI on failure
+            this.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
+            this.style.backgroundColor = "";
+            return;
+          }
 
           setTimeout(() => {
             this.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
             this.style.backgroundColor = "";
           }, 2000);
-
-          // In a real app, you would add to cart logic here
-          console.log(
-            `Added ${product.name} (Size: ${selectedSize.getAttribute(
-              "data-size"
-            )}) to cart`
-          );
         });
 
         // Back button

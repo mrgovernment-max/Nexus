@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(() => {
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
-  }, 5000);
+  }, 3000);
 
   // Mobile Menu Toggle
   const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
