@@ -50,7 +50,7 @@
       const cartContent = document.getElementById("cart-content");
 
       // Check login
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(sessionStorage.getItem("user"));
 
       if (!user) {
         cartContent.innerHTML = `
@@ -208,7 +208,7 @@
 
       // Remove item from cart
       async function removeItem(productId) {
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(sessionStorage.getItem("user"));
         console.log(user.id, productId);
 
         if (!user) {

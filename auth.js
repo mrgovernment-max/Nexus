@@ -50,7 +50,7 @@ if (loginForm) {
       if (!res.ok) throw new Error(data.message);
 
       // Store user session
-      localStorage.setItem("user", JSON.stringify(data.user));
+      sessionStorage.setItem("user", JSON.stringify(data.user));
 
       window.location.href = "index.html";
     } catch (err) {

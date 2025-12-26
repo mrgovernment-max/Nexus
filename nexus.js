@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const product = products.find((p) => p.id === id);
         if (!product) return;
 
-        localStorage.setItem("selectedProduct", JSON.stringify(product));
+        sessionStorage.setItem("selectedProduct", JSON.stringify(product));
         window.location.href = "nexusdt.html";
       });
 
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   async function getCartno() {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(sessionStorage.getItem("user"));
     const cartCon = document.getElementById("cart-count");
     const res = await fetch(
       `https://backendroutes-lcpt.onrender.com/cart/${user.id}`,

@@ -478,7 +478,7 @@
               throw new Error(data.message || "Login failed");
             }
 
-            localStorage.setItem("user", JSON.stringify(data.user));
+            sessionStorage.setItem("user", JSON.stringify(data.user));
             showMessage("✓ Login successful! Redirecting...", "success");
 
             setTimeout(() => {

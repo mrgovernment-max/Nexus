@@ -73,8 +73,8 @@
 
       const loadBtn = document.getElementById("load-products-btn");
       const productsGrid = document.querySelector(".products-grid");
-      // Retrieve product data from localStorage
-      const productData = JSON.parse(localStorage.getItem("selectedProduct"));
+      // Retrieve product data from sessionStorage
+      const productData = JSON.parse(sessionStorage.getItem("selectedProduct"));
 
       // If no product data, show a default product
       const product = productData || {
@@ -297,7 +297,7 @@
         const addToCartBtn = document.getElementById("add-to-cart");
 
         addToCartBtn.addEventListener("click", async function () {
-          const user = JSON.parse(localStorage.getItem("user"));
+          const user = JSON.parse(sessionStorage.getItem("user"));
 
           const userId = user.id;
           console.log(user);
@@ -384,7 +384,7 @@
       });
 
       async function getCartno() {
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(sessionStorage.getItem("user"));
         const cartCon = document.getElementById("cart-count");
         const res = await fetch(
           `https://backendroutes-lcpt.onrender.com/cart/${user.id}`,
