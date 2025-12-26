@@ -103,7 +103,6 @@
               ...product,
               size: cartItem.size,
               cart_id: cartItem.id,
-              quantity: cartItem.quantity || 1,
             };
           });
 
@@ -154,27 +153,14 @@
                                         <p>Color: Black/White</p>
                                     </div>
                                     <div class="item-price">$${(
-                                      parseFloat(item.price) *
-                                      (item.quantity || 1)
+                                      parseFloat(item.price) * 1
                                     ).toFixed(2)}</div>
                                 </div>
                             </div>
                             
-                            <div class="item-actions">
-                                <div class="quantity-control">
-                                    <button class="qty-btn minus" onclick="updateQuantity(${
-                                      item.cart_id
-                                    }, 'decrease')">-</button>
-                                    <input type="text" class="qty-input" value="${
-                                      item.quantity || 1
-                                    }" readonly>
-                                    <button class="qty-btn plus" onclick="updateQuantity(${
-                                      item.cart_id
-                                    }, 'increase')">+</button>
-                                </div>
-                                
+                            <div class="item-actions"> 
                                 <button class="remove-btn" onclick="removeItem(${
-                                  item.cart_id
+                                  item.id
                                 })">
                                     <i class="fas fa-trash"></i>
                                     <span>Remove</span>
@@ -214,13 +200,43 @@
             `;
       }
 
-      // Placeholder functions for cart actions
-      function removeItem(cartId) {
-        if (confirm("Remove this item from your cart?")) {
-          // In a real app, you would call DELETE /cart/:id
-          // fetch(`${API_BASE}/cart/${cartId}`, { method: 'DELETE' })
+      // Remove item from cart
+      async function removeItem(productId) {
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log(user.id, productId);
+
+        if (!user) {
+          alert("Please log in to manage your cart.");
+          window.location.href = "login.html";
+          return;
+        }
+
+        if (!confirm("Remove this item from your cart?")) return;
+
+        try {
+          const res = await fetch(
+            "https://backendroutes-lcpt.onrender.com/cart/remove",
+            {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userId: user.id,
+                productId,
+              }),
+            }
+          );
+
+          const data = await res.json();
+          console.log(data);
+          if (!res.ok) throw new Error(data.message);
+
           alert("Item removed from cart");
-          loadCart(); // Reload cart
+          loadCart(); // Reload cart items
+        } catch (err) {
+          console.error(err);
+          alert("Failed to remove item");
         }
       }
 

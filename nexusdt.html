@@ -340,6 +340,7 @@
 
             const data = await res.json();
             if (data.message === "Added to cart") {
+              getCartno();
               // UI animation
               this.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
               this.style.backgroundColor = "#28a745";
@@ -398,6 +399,13 @@
 
         const cartItemno = await res.json();
         cartCon.innerHTML = Number(cartItemno.length);
+
+        cartCon.innerHTML = Number(cartItemno.length);
+
+        // force reflow so animation can replay
+        cartCon.classList.remove("bounce");
+        void cartCon.offsetWidth;
+        cartCon.classList.add("bounce");
       }
 
       getCartno();
