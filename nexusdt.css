@@ -484,6 +484,7 @@ span {
 }
 
 .detail-label {
+  color: var(--primary-color);
   font-weight: 600;
   min-width: 150px;
 }

@@ -337,6 +337,15 @@ body {
   transform: translateY(-2px);
 }
 
+.checkout-btn {
+  transition: 0.5s ease-in-out;
+}
+
+.checkout-btn:hover {
+  background-color: rgba(156, 241, 139, 0.265);
+  color: black;
+}
+
 /* Loading State */
 .loading-container {
   text-align: center;

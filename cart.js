@@ -153,7 +153,7 @@ function renderCart(items) {
               </div>
               
               <button class="checkout-btn" onclick="checkout()">
-                  <i class="fas fa-lock"></i> PROCEED TO CHECKOUT
+                   PROCEED TO CHECKOUT
               </button>
           </div>
       `;

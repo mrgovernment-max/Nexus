@@ -175,19 +175,19 @@ function renderProductDetails() {
                             </li>
                             <li>
                                 <span class="detail-label">Material:</span>
-                                <span>Breathable Mesh & Synthetic Leather</span>
+                                <span>${product.material}</span>
                             </li>
                             <li>
                                 <span class="detail-label">Weight:</span>
-                                <span>320g (per shoe)</span>
+                                <span>${product.weight}</span>
                             </li>
                             <li>
                                 <span class="detail-label">Color:</span>
-                                <span>White/Black/Orange</span>
+                                <span>${product.color}</span>
                             </li>
                             <li>
                                 <span class="detail-label">Warranty:</span>
-                                <span>2 Years Manufacturing Warranty</span>
+                                <span>${product.warranty}</span>
                             </li>
                         </ul>
                     </div>

@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-  // Form submission - YOUR EXACT LOGIC
+  // Form submission
   const checkoutForm = document.getElementById("checkout-form");
   const submitButton = checkoutForm.querySelector(".submit-btn");
 
