@@ -31,13 +31,13 @@ if (signupForm) {
 
 // LOGIN
 const loginForm = document.getElementById("login-form");
+const submitButton = loginForm.querySelector('button[type="submit"]');
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    console.log(email, password);
 
     try {
       const res = await fetch(`${API_BASE}/auth/login`, {
@@ -57,4 +57,21 @@ if (loginForm) {
       alert(err.message || "Login failed");
     }
   });
+}
+
+function showError(message) {
+  // Create error element if it doesn't exist
+  let errorEl = document.querySelector(".error-message");
+  if (!errorEl) {
+    errorEl = document.createElement("div");
+    errorEl.className = "error-message";
+    loginForm.appendChild(errorEl);
+  }
+  errorEl.textContent = message;
+  errorEl.style.display = "block";
+
+  // Hide error after 3 seconds
+  setTimeout(() => {
+    errorEl.style.display = "none";
+  }, 3000);
 }
