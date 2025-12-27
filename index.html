@@ -313,5 +313,124 @@
         </div>
       </div>
     </footer>
+
+    <!-- Add this to your index.html before closing body tag -->
+    <div id="project-overlay" class="project-overlay">
+      <div class="overlay-content">
+        <div class="overlay-header">
+          <div class="dev-badge">
+            <i class="fas fa-code"></i>
+            <span>Developer Project</span>
+          </div>
+          <button class="close-overlay" onclick="closeProjectOverlay()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="overlay-body">
+          <div class="project-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+
+          <h2 class="project-title">Full-Stack Developer Project</h2>
+          <p class="project-subtitle">NEXUS E-Commerce Platform</p>
+
+          <div class="project-description">
+            <p>
+              Welcome to my full-stack development demonstration project. This
+              is a complete e-commerce platform I built from scratch.
+            </p>
+
+            <div class="tech-stack">
+              <div class="tech-item">
+                <i class="fab fa-html5"></i>
+                <span>Frontend</span>
+              </div>
+              <div class="tech-item">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="tech-item">
+                <i class="fab fa-node-js"></i>
+                <span>Backend</span>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-database"></i>
+                <span>Database</span>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-credit-card"></i>
+                <span>Stripe Payment</span>
+              </div>
+            </div>
+
+            <div class="features-list">
+              <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>User Authentication</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Shopping Cart</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Payment Processing</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Responsive Design</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="explore-cta">
+            <p><strong>Feel free to explore:</strong></p>
+            <div class="explore-options">
+              <span>• Browse products</span>
+              <span>• Create account/login</span>
+              <span>• Add to cart</span>
+              <span>• Test checkout</span>
+            </div>
+          </div>
+
+          <div class="contact-section">
+            <p>For inquiries or collaboration:</p>
+            <div class="contact-links">
+              <a
+                href="mailto:youremail@example.com"
+                class="contact-btn"
+                target="_blank"
+              >
+                <i class="fas fa-envelope"></i> Email
+              </a>
+              <a
+                href="https://github.com/yourusername"
+                class="contact-btn github"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/yourprofile"
+                class="contact-btn linkedin"
+                target="_blank"
+              >
+                <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="overlay-footer">
+          <button class="explore-btn" onclick="closeProjectOverlay()">
+            <i class="fas fa-play"></i> Start Exploring
+          </button>
+          <p class="notice">
+            Note: This is a demo site. No real purchases will be processed.
+          </p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

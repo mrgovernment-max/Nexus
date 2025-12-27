@@ -252,3 +252,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
   getCartno();
 });
+
+//overlay
+
+// Check sessionStorage to see if user has visited before
+function hasVisitedBefore() {
+  return sessionStorage.getItem("hasSeenProjectOverlay") === "true";
+}
+
+// Mark user as having visited
+function markAsVisited() {
+  sessionStorage.setItem("hasSeenProjectOverlay", "true");
+}
+
+// Close overlay function
+function closeProjectOverlay() {
+  const overlay = document.getElementById("project-overlay");
+  overlay.style.opacity = "0";
+  overlay.style.transition = "opacity 0.3s ease-out";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+    // Mark as visited so it won't show again
+    markAsVisited();
+  }, 300);
+}
+
+// Show overlay only on first visit
+document.addEventListener("DOMContentLoaded", function () {
+  if (!hasVisitedBefore()) {
+    setTimeout(() => {
+      document.getElementById("project-overlay").style.display = "flex";
+    }, 500);
+  }
+
+  document.querySelector('a[href^="mailto:"]').href =
+    "mailto:efenteng1@gmail.com.com";
+  document.querySelector(".github").href =
+    "https://github.com/mrgovernment-max";
+  document.querySelector(".linkedin").href =
+    "https://www.linkedin.com/in/emmanuel-fenteng-135092308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app";
+});
+
+// Close on Escape key
+document.addEventListener("keydown", function (e) {
+  if (
+    e.key === "Escape" &&
+    document.getElementById("project-overlay").style.display === "flex"
+  ) {
+    closeProjectOverlay();
+  }
+});
+
+// Close on background click
+document
+  .getElementById("project-overlay")
+  .addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeProjectOverlay();
+    }
+  });
