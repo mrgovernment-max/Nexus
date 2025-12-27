@@ -251,6 +251,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   getCartno();
+
+  //hide auth buttons if user is logged in
+
+  const user = sessionStorage.getItem("user");
+  const login = document.getElementById("login");
+  const signup = document.getElementById("signup");
+  if (user) {
+    login.style.display = "none";
+    signup.style.display = "none";
+  }
+  console.log(user);
 });
 
 //overlay
