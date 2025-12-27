@@ -161,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Newsletter form submission
-  // Newsletter form submission
   const form = document.getElementById("subscribe-form");
   const button = form.querySelector("#subscribe-btn");
   const responseMsg = document.getElementById("response-msg");
@@ -175,14 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!email) {
       responseMsg.style.color = "#dc3545";
       responseMsg.textContent = "Please enter your email address.";
-      return;
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      responseMsg.style.color = "#dc3545";
-      responseMsg.textContent = "Please enter a valid email address.";
       return;
     }
 
@@ -256,11 +247,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     const cartItemno = await res.json();
-    cartCon.innerHTML = Number(cartItemno.length);
+    cartCon.innerHTML = Number(cartItemno.length) || 0;
   }
 
   getCartno();
-
-  //add pics n maybe vids to customer testimonials
-  //more textimonials and better shoes
 });

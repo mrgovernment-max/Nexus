@@ -28,6 +28,59 @@ document.addEventListener("DOMContentLoaded", () => {
   // Render checkout page
   checkoutContent.innerHTML = `
             <div class="checkout-grid">
+
+              
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3 class="summary-title">
+                    <i class="fas fa-receipt"></i>
+                    Order Summary
+                </h3>
+                
+                <div class="cart-items">
+                    ${cart
+                      .map(
+                        (item) => `
+                        <div class="cart-item">
+                            <div class="item-image">
+                                <img src="${item.img_url}" alt="${item.name}">
+                            </div>
+                            <div class="item-info">
+                                <div class="item-name">${item.name}</div>
+                                <div class="item-details">
+                                    Size: ${item.size}
+                                </div>
+                                <div class="item-price">$${item.price}</div>
+                            </div>
+                        </div>
+                    `
+                      )
+                      .join("")}
+                </div>
+                
+                <div class="totals">
+                    <div class="total-row">
+                        <span>Subtotal (${cart.length} items)</span>
+                        <span>$${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Shipping</span>
+                        <span>${
+                          shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`
+                        }</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Tax</span>
+                        <span>$${tax.toFixed(2)}</span>
+                    </div>
+                    <div class="total-row final">
+                        <span>Total</span>
+                        <span>$${total.toFixed(2)}</span>
+                    </div>
+                </div>
+            </div>
+
+
                 <!-- Delivery Form -->
                 <div class="form-container">
                     <h2 class="form-title">
@@ -104,58 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 </div>
-                
-                <!-- Order Summary -->
-                <div class="order-summary">
-                    <h3 class="summary-title">
-                        <i class="fas fa-receipt"></i>
-                        Order Summary
-                    </h3>
-                    
-                    <div class="cart-items">
-                        ${cart
-                          .map(
-                            (item) => `
-                            <div class="cart-item">
-                                <div class="item-image">
-                                    <img src="${item.img_url}" alt="${item.name}">
-                                </div>
-                                <div class="item-info">
-                                    <div class="item-name">${item.name}</div>
-                                    <div class="item-details">
-                                        Size: ${item.size}
-                                    </div>
-                                    <div class="item-price">$${item.price}</div>
-                                </div>
-                            </div>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                    
-                    <div class="totals">
-                        <div class="total-row">
-                            <span>Subtotal (${cart.length} items)</span>
-                            <span>$${subtotal.toFixed(2)}</span>
-                        </div>
-                        <div class="total-row">
-                            <span>Shipping</span>
-                            <span>${
-                              shipping === 0
-                                ? "FREE"
-                                : `$${shipping.toFixed(2)}`
-                            }</span>
-                        </div>
-                        <div class="total-row">
-                            <span>Tax</span>
-                            <span>$${tax.toFixed(2)}</span>
-                        </div>
-                        <div class="total-row final">
-                            <span>Total</span>
-                            <span>$${total.toFixed(2)}</span>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
         `;
 

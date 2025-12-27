@@ -160,9 +160,7 @@ function renderProductDetails() {
                         <button class="btn btn-primary" id="add-to-cart">
                             <i class="fas fa-shopping-cart"></i> Add to Cart
                         </button>
-                        <button class="btn btn-secondary" id="buy-btn">
-                            Purchase
-                        </button>
+                        
                     </div>
 
                     <!-- Product Details Section -->
@@ -282,10 +280,9 @@ function setupEventListeners() {
         void cartCon.offsetWidth;
         cartCon.classList.add("bounce");
       }
-      console.log(data);
     } catch (err) {
       console.error(err);
-      alert("Could not add item to cart. Try again.");
+      alert("Product already in Cart ");
 
       // revert UI on failure
       this.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
@@ -336,7 +333,7 @@ async function getCartno() {
   );
 
   const cartItemno = await res.json();
-  cartCon.innerHTML = Number(cartItemno.length);
+  cartCon.innerHTML = Number(cartItemno.length) || 0;
 }
 
 getCartno();

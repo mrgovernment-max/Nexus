@@ -20,7 +20,7 @@ if (!user) {
 
 async function loadCart() {
   try {
-    // 1️⃣ Get cart rows
+    // Get cart rows
     const cartRes = await fetch(`${API_BASE}/cart/${user.id}`);
     const cartItems = await cartRes.json();
 
@@ -36,10 +36,10 @@ async function loadCart() {
       return;
     }
 
-    // 2️⃣ Extract product IDs
+    //  Extract product id
     const productIds = cartItems.map((item) => item.product_id);
 
-    // 3️⃣ Fetch products
+    // Fetch products
     const productRes = await fetch(`${API_BASE}/products/by-ids`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -48,7 +48,7 @@ async function loadCart() {
 
     const products = await productRes.json();
 
-    // 4️⃣ Merge cart + product data
+    //  Merge cart + product data
     const merged = cartItems.map((cartItem) => {
       const product = products.find((p) => p.id === cartItem.product_id);
       return {
@@ -65,7 +65,8 @@ async function loadCart() {
     renderCart(merged);
 
     // Update cart count
-    document.getElementById("cart-count").textContent = cartItems.length;
+    document.getElementById("cart-count").textContent =
+      Number(cartItems.length) || 0;
   } catch (err) {
     cartContent.innerHTML = `
               <div class="error-container">

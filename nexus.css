@@ -582,7 +582,7 @@ nav ul li a:hover {
   color: var(--accent-color);
 }
 
-/* Responsive: vertical stack on small screens */
+/* Responsiveness*/
 @media (max-width: 600px) {
   .verdicts-grid {
     grid-template-columns: 1fr;
@@ -680,7 +680,6 @@ button.loading .loader {
   }
 }
 
-/* Add this to your existing CSS */
 #subscribe-btn {
   position: relative;
 }

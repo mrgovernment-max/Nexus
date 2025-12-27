@@ -13,7 +13,7 @@ body {
   flex-direction: column;
 }
 
-/* Header - Takes up top portion on mobile */
+/* Header  */
 .mobile-header {
   background: linear-gradient(135deg, #111 0%, #ff6b35 100%);
   padding: 40px 30px;
@@ -83,7 +83,7 @@ body {
   color: white;
 }
 
-/* Form - Takes up rest of screen on mobile */
+/* Form  */
 .mobile-form {
   background: #111;
   flex: 1;

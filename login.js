@@ -77,6 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Auto-focus email input on load for better mobile UX
+  // Auto-focus email input on load for better mobile ux
   document.getElementById("email").focus();
 });
