@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
       message: document.getElementById("message").value,
     };
 
-    console.log(formData);
-
     // Basic validation
     if (
       !formData.name ||
@@ -35,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https:backendroutes-lcpt.onrender.com/nexus-contact",
+        "https://backendroutes-lcpt.onrender.com/nexus-contact",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
