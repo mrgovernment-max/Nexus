@@ -264,6 +264,193 @@
       </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <!-- Header -->
+        <div class="section-header">
+          <h2>Get In <span class="accent">Touch</span></h2>
+          <p>
+            Have questions or need assistance? We're here to help. Reach out to
+            us through any of the following ways.
+          </p>
+        </div>
+
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h3>Visit Our Store</h3>
+              <p>123 Athletic Avenue<br />Sports City, SC 10001</p>
+              <a href="#" class="info-link" target="_blank">
+                <i class="fas fa-directions"></i> Get Directions
+              </a>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <h3>Call Us</h3>
+              <p>Available Monday to Friday, 9AM - 6PM EST</p>
+              <a href="tel:+11234567890" class="info-link">
+                <i class="fas fa-phone"></i> +1 (123) 456-7890
+              </a>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h3>Email Us</h3>
+              <p>We'll respond within 24 hours</p>
+              <a href="mailto:support@nexus.com" class="info-link">
+                <i class="fas fa-paper-plane"></i> support@nexus.com
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-container">
+            <h3 class="form-title">Send Us a Message</h3>
+            <form id="contactForm" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="order">Order Support</option>
+                  <option value="product">Product Questions</option>
+                  <option value="returns">Returns & Exchanges</option>
+                  <option value="wholesale">Wholesale Inquiry</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="How can we help you?"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+
+              <div id="formResponse" class="response-message"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="social-section">
+          <h3 class="social-title">Connect With Us</h3>
+          <div class="social-icons">
+            <a href="#" class="social-icon" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-icon" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+          <h3 class="faq-title">Frequently Asked Questions</h3>
+          <div class="faq-container">
+            <div class="faq-item">
+              <div class="faq-question">
+                What is your return policy?
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                We offer a 30-day return policy for all unused items in their
+                original packaging. Shipping costs for returns are covered by
+                the customer unless the item is defective.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                How long does shipping take?
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Standard shipping takes 5-7 business days. Express shipping (2-3
+                days) is available at checkout. International shipping times
+                vary by location.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                Do you offer international shipping?
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Yes, we ship to over 50 countries worldwide. Shipping costs and
+                delivery times vary by destination. Check available countries at
+                checkout.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                How can I track my order?
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Once your order ships, you'll receive a tracking number via
+                email. You can also track your order by logging into your
+                account on our website.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer>
       <div class="container">
@@ -331,7 +518,6 @@
       </div>
     </footer>
 
-    <!-- Add this to your index.html before closing body tag -->
     <div id="project-overlay" class="project-overlay">
       <div class="overlay-content">
         <div class="overlay-header">

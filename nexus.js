@@ -1,4 +1,87 @@
 document.addEventListener("DOMContentLoaded", () => {
+  //Contact Section
+  // Form submission handling
+  const contactForm = document.getElementById("contactForm");
+  const submitBtn = contactForm.querySelector(".submit-btn");
+  const responseDiv = document.getElementById("formResponse");
+
+  submitBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    // Get form data
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
+
+    console.log(formData);
+
+    // Basic validation
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.subject ||
+      !formData.message
+    ) {
+      showResponse("Please fill in all required fields.", "error");
+      return;
+    }
+
+    // Show loading state
+    submitBtn.classList.add("loading");
+    submitBtn.disabled = true;
+
+    try {
+      const response = await fetch(
+        "https:backendroutes-lcpt.onrender.com/nexus-contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      contactForm.reset();
+
+      showResponse(
+        "Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.",
+        "success"
+      );
+    } catch (error) {
+      console.error("Error:", error);
+      showResponse("Something went wrong. Please try again later.", "error");
+    } finally {
+      // Remove loading state
+      submitBtn.classList.remove("loading");
+      submitBtn.disabled = false;
+    }
+  });
+
+  // Show response message
+  function showResponse(message, type) {
+    responseDiv.textContent = message;
+    responseDiv.className = `response-message ${type}`;
+
+    // Auto-hide success message after 5 seconds
+    if (type === "success") {
+      setTimeout(() => {
+        responseDiv.className = "response-message";
+      }, 5000);
+    }
+  }
+
+  // FAQ toggle functionality
+  document.querySelectorAll(".faq-question").forEach((question) => {
+    question.addEventListener("click", () => {
+      const faqItem = question.parentElement;
+      faqItem.classList.toggle("active");
+    });
+  });
+
   // Testimonial Slider
   let currentSlide = 0;
   const slides = document.querySelectorAll(".testimonial-slide");
