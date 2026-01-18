@@ -83,7 +83,6 @@ body {
   }
 }
 
-/* Rest of the CSS remains the same as before */
 .overlay-header {
   display: flex;
   justify-content: space-between;
@@ -246,7 +245,6 @@ body {
 .contact-section {
   text-align: center;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
   border-radius: 15px;
   margin-bottom: 20px;
 }
